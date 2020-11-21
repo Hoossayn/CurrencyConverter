@@ -21,7 +21,6 @@ class FixerRatingResponse {
     var rates: Rates? = null
 }
 
-
 class Rates {
 
     @SerializedName(

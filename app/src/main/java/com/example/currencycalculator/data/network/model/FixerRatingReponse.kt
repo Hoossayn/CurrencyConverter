@@ -18,7 +18,9 @@ class FixerRatingsReponse(private val ratingOfCurrencyToConverTo: Response<Fixer
     private fun getCurrencyRating( response: Response<FixerRatingResponse>): Double {
         return when( response.isSuccessful){
             true -> {
-                response.body()!!.rates!!.currentRatings!!
+                println("call response ${response.body()}")
+
+                response.body()?.rates?.currentRatings!!
             }
             else -> {
                 Double.MIN_VALUE
