@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Currency calculator</string>
-
+    <string name="currency_calculator">Currency\nCalculator</string>
+    <string name="currency_ncalculator">Currency Calculator<font color="#33FF75">.</font></string>
 
     <string name="currency_conv">Currency Converter.</string>
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.currencycalculator.data.network.Resource
-import com.example.currencycalculator.data.network.model.FixerRatingsReponse
+import com.example.currencycalculator.data.network.model.FixerRatingsResponse
 import com.example.currencycalculator.data.network.model.response.FixerRatingResponse
 import com.example.currencycalculator.data.repository.CurrencyRateRepository
 import com.example.currencycalculator.usecases.CurrencyConverterUseCases
@@ -35,7 +35,7 @@ class HomeViewModel @ViewModelInject constructor(
                     fromFlow.zip(toFlow) { currencyToConvertToRating: Response<FixerRatingResponse>,
                                            currencyToConvertFromRating: Response<FixerRatingResponse> ->
 
-                            FixerRatingsReponse(
+                            FixerRatingsResponse(
                                     currencyToConvertToRating,
                                     currencyToConvertFromRating
                             )
@@ -48,7 +48,7 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-    private fun computeConversionRate(response: FixerRatingsReponse) {
+    private fun computeConversionRate(response: FixerRatingsResponse) {
         val conversionRate = currencyConverterUseCases.computeConversionRate(
                 response.getCurrencyToConvertFromRating(),
                 response.getCurrencyToConvertToRating()

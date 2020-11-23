@@ -1,0 +1,19 @@
+
+|
+Lapp/src/main/java/com/example/currencycalculator/data/network/MyApiHelper.kt,6/6/661838684e9d8eb465705ea040f1c06f4472d4ae
+v
+Fapp/src/main/java/com/example/currencycalculator/data/network/MyApi.kt,b/c/bcea2adaa2f3ca66c4c5b12c6178ba26d8a5697a
+Š
+Zapp/src/main/java/com/example/currencycalculator/data/repository/CurrencyRateRepository.kt,e/9/e985d2e1985ba88dd7ddbd69f7e079d0bf85b6f1
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+s
+Capp/src/main/java/com/example/currencycalculator/ui/HomeFragment.kt,2/2/22c68c3d7cb5d120b89b1b705021116c63f94950
+s
+Capp/src/main/java/com/example/currencycalculator/ui/MainActivity.kt,1/c/1cd0116d5c96d4141077dec59ef86acaa59a2f2f
+t
+Dapp/src/main/java/com/example/currencycalculator/ui/HomeViewModel.kt,f/7/f7c8e0a3d7d69a1e53058d2542cdb17ea8659579
+“
+capp/src/main/java/com/example/currencycalculator/data/network/model/response/FixerRatingResponse.kt,7/a/7aeaf21a9d8481d8ad58d1273a6272153790ba4d
+‰
+Yapp/src/main/java/com/example/currencycalculator/data/network/model/FixerRatingReponse.kt,7/7/77fd63cbd2a9571c469ba908e4665c06204f2215

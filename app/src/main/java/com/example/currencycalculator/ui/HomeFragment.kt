@@ -1,13 +1,12 @@
 package com.example.currencycalculator.ui
 
-
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.currencycalculator.R
@@ -16,6 +15,8 @@ import com.example.currencycalculator.data.model.Currency
 import com.example.currencycalculator.ui.dialog.CurrencySelectionDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.spinner_layout.*
+import kotlinx.android.synthetic.main.spinner_layout_2.*
 
 
 @AndroidEntryPoint
@@ -49,27 +50,33 @@ class HomeFragment : Fragment() {
             swapCurrency(currencyToConvertTo, currencyToConvertFrom, convertToTextViewSpinner, convertFromTextViewSpinner)
         }
 
-        btn_submit.setOnClickListener {
-            val currencyConvertToAmount = txt_input_currency_convert_to.editText
-            val currencyToConvertFromAmount = txt_input_currency_to_convert_from?.editText
+        btn_convert.setOnClickListener {
 
-            homeViewModel.getLatestRates(currencyToConvertTo?.code!!, currencyToConvertFrom?.code!!)
-            homeViewModel.getRatingsLiveData().observe(requireActivity(), Observer {
-                when (it.status) {
-                    Status.LOADING -> {
-                    }
-                    Status.ERROR -> {
+            var currencyConvertToAmount:Editable = txt_input_currency_convert_to.text
+            var currencyToConvertFromAmount  = txt_input_currency_to_convert_from.text
 
-                    }
-                    Status.LOADED -> {
-                    }
-                    Status.SUCCESS -> {
-                        it.data?.let { exchange ->
-                                    currencyConvertToAmount?.setText("${currencyToConvertFromAmount?.text.toString().toDouble() *  exchange}")
-                        }
-                    }
-                }
-            })
+           if(!currencyConvertToAmount.isNullOrEmpty() || !currencyToConvertFromAmount.isNullOrEmpty()){
+
+               homeViewModel.getLatestRates(currencyToConvertTo?.code!!, currencyToConvertFrom?.code!!)
+               homeViewModel.getRatingsLiveData().observe(requireActivity(), Observer {
+                   when (it.status) {
+                       Status.LOADING -> {
+                       }
+                       Status.ERROR -> {
+
+                       }
+                       Status.LOADED -> {
+                       }
+                       Status.SUCCESS -> {
+                           it.data.let { exchange ->
+                               currencyConvertToAmount?.equals("${currencyToConvertFromAmount.toString().toDouble() * exchange!!}")
+                           }
+                       }
+                   }
+               })
+           }
+
+
 
 
         }
