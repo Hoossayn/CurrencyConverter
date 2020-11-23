@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -27,8 +28,8 @@ class HomeFragment : Fragment() {
     private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -52,31 +53,32 @@ class HomeFragment : Fragment() {
 
         btn_convert.setOnClickListener {
 
-            var currencyConvertToAmount:Editable = txt_input_currency_convert_to.text
-            var currencyToConvertFromAmount  = txt_input_currency_to_convert_from.text
+            var currencyToConvertFromAmount: String = txt_input_currency_to_convert_from.text.toString()
 
-           if(!currencyConvertToAmount.isNullOrEmpty() || !currencyToConvertFromAmount.isNullOrEmpty()){
+            if (!txt_input_currency_convert_to.text.isNullOrEmpty() ||
+                    !txt_input_currency_to_convert_from.text.isNullOrEmpty()) {
 
-               homeViewModel.getLatestRates(currencyToConvertTo?.code!!, currencyToConvertFrom?.code!!)
-               homeViewModel.getRatingsLiveData().observe(requireActivity(), Observer {
-                   when (it.status) {
-                       Status.LOADING -> {
-                       }
-                       Status.ERROR -> {
-
-                       }
-                       Status.LOADED -> {
-                       }
-                       Status.SUCCESS -> {
-                           it.data.let { exchange ->
-                               currencyConvertToAmount?.equals("${currencyToConvertFromAmount.toString().toDouble() * exchange!!}")
-                           }
-                       }
-                   }
-               })
-           }
-
-
+                homeViewModel.getLatestRates(currencyToConvertTo?.code!!, currencyToConvertFrom?.code!!)
+                homeViewModel.getRatingsLiveData().observe(requireActivity(), Observer {
+                    when (it.status.toString()) {
+                        Status.LOADING.toString() -> {
+                            progressBar.visibility = View.VISIBLE
+                        }
+                        Status.ERROR.toString() -> {
+                            progressBar.visibility = View.GONE
+                        }
+                        Status.LOADED.toString() -> {
+                            progressBar.visibility = View.GONE
+                        }
+                        Status.SUCCESS.toString() -> {
+                            progressBar.visibility = View.GONE
+                            it.data.let { exchange ->
+                                txt_input_currency_convert_to.setText("${currencyToConvertFromAmount.toDouble() * exchange!!}")
+                            }
+                        }
+                    }
+                })
+            }
 
 
         }
@@ -85,7 +87,7 @@ class HomeFragment : Fragment() {
     private fun showCurrencySelection(textView: View) {
         val currencySelectionDialogFragment = CurrencySelectionDialogFragment.newInstance()
         currencySelectionDialogFragment.onCurrencySelected =
-            { currency: Currency -> updateSelectedCurrency(currency, textView) }
+                { currency: Currency -> updateSelectedCurrency(currency, textView) }
         currencySelectionDialogFragment.show(requireFragmentManager(), "CurrencySelectionDialogFragment")
 
     }
@@ -103,10 +105,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun swapCurrency(
-        currencyToConvertTo: Currency?,
-        currencyToConvertFrom: Currency?,
-        currencyToConvertToTextView: TextView,
-        currencyToConvertFromTextView: TextView
+            currencyToConvertTo: Currency?,
+            currencyToConvertFrom: Currency?,
+            currencyToConvertToTextView: TextView,
+            currencyToConvertFromTextView: TextView
     ) {
         updateSelectedCurrency(currencyToConvertFrom, currencyToConvertToTextView)
         updateSelectedCurrency(currencyToConvertTo, currencyToConvertFromTextView)

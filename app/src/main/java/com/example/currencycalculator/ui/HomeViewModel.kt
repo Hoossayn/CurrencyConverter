@@ -53,6 +53,7 @@ class HomeViewModel @ViewModelInject constructor(
                 response.getCurrencyToConvertFromRating(),
                 response.getCurrencyToConvertToRating()
         )
+
         currencyExchangeRateLiveData.value = Resource.success(
                 conversionRate
         )
