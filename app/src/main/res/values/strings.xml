@@ -10,5 +10,7 @@
     <string name="select_currency">Select currency</string>
     <string name="cancel">Cancel</string>
     <string name="currency_abbreviation" translatable="false">%1$s\u0020\u0020%2$s</string>
+    <string name="convert">Convert</string>
+    <string name="sign_up_text">Sign up</string>
 
 </resources>

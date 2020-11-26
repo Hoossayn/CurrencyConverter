@@ -65,6 +65,7 @@ class HomeFragment : Fragment() {
                             progressBar.visibility = View.VISIBLE
                         }
                         Status.ERROR.toString() -> {
+                            homeViewModel
                             progressBar.visibility = View.GONE
                         }
                         Status.LOADED.toString() -> {

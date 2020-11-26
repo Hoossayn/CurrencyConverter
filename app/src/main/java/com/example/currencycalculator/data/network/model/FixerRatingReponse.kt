@@ -17,10 +17,16 @@ class FixerRatingsResponse(private val ratingOfCurrencyToConvertTo: Response<Fix
     }
 
     private fun getCurrencyRating( response: Response<FixerRatingResponse>): Double {
+        var ss:Double? = null
+        for(ratings in response.body()?.rates!!.values){
+            ss = ratings
+            return  ratings
+        }
+
         return when( response.isSuccessful){
             true -> {
-
-                response.body()?.rates?.currentRatings!!
+              ss!!
+               // response.body()?.rates?.currentRatings!!
             }
             else -> {
                 Double.MIN_VALUE

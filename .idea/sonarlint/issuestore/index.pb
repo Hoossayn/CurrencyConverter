@@ -17,3 +17,7 @@ Dapp/src/main/java/com/example/currencycalculator/ui/HomeViewModel.kt,f/7/f7c8e
 capp/src/main/java/com/example/currencycalculator/data/network/model/response/FixerRatingResponse.kt,7/a/7aeaf21a9d8481d8ad58d1273a6272153790ba4d
 ‰
 Yapp/src/main/java/com/example/currencycalculator/data/network/model/FixerRatingReponse.kt,7/7/77fd63cbd2a9571c469ba908e4665c06204f2215
+q
+Aapp/src/main/java/com/example/currencycalculator/data/Resource.kt,3/8/388548d26e19200194310aa1c04fb5be57be81d3
+w
+Gapp/src/main/java/com/example/currencycalculator/utils/NetworkHelper.kt,8/3/8397992c700d7daac4ea44bfdc27eda8a48526b7

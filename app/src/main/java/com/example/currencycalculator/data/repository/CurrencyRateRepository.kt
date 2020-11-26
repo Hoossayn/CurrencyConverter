@@ -6,10 +6,6 @@ import javax.inject.Inject
 
 class CurrencyRateRepository @Inject constructor(private val apiHelper: MyApiHelper){
 
-    suspend fun getRates(currencyConvertingTo:String)
-
-    = apiHelper.getRate(currencyConvertingTo)
-
-
+    suspend fun getRates(currencyConvertingTo:String) = apiHelper.getRate(currencyConvertingTo)
 
 }

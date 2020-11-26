@@ -6,9 +6,9 @@ package com.example.currencycalculator.data.network
     companion object {
         fun <T> success(data: T): Resource<T> = Resource(Status.SUCCESS, data, message = null)
 
-        fun <T> error(message: String?, data: T?): Resource<T> = Resource(Status.ERROR, data, message)
+        fun <T> error(message: String?, data: T? = null): Resource<T> = Resource(Status.ERROR, data, message)
 
-        fun <T> loading(data: T): Resource<T> = Resource(Status.LOADING, data, message = null)
+        fun <T> loading(data: T? = null): Resource<T> = Resource(Status.LOADING, data = null, message = null)
     }
 
 }

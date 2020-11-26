@@ -18,7 +18,8 @@ class FixerRatingResponse {
     var date: String? = null
     @SerializedName("rates")
     @Expose
-    var rates: Rates? = null
+    var rates: Map<String, Double>? = null
+   // var rates: Rates? = null
 }
 
 class Rates {

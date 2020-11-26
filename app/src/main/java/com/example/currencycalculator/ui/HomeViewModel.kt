@@ -26,6 +26,8 @@ class HomeViewModel @ViewModelInject constructor(
 
     fun getLatestRates(currencyToConvertTo: String, currencyToConvertFrom: String) {
         viewModelScope.launch {
+
+            loadingState()
             if (networkHelper.isNetworkConnected()) {
 
                 val fromFlow = listOf(repository.getRates(currencyToConvertTo)).asFlow()
@@ -40,6 +42,10 @@ class HomeViewModel @ViewModelInject constructor(
                                     currencyToConvertFromRating
                             )
 
+                    }.onStart {
+                        loadingState()
+                    }.catch {
+                        errorState()
                     }.collect {
                         computeConversionRate(it)
                     }
@@ -47,6 +53,17 @@ class HomeViewModel @ViewModelInject constructor(
             }
         }
     }
+
+    private fun errorState() {
+        currencyExchangeRateLiveData.value = Resource.error("Error occurred: Unable to perform conversion at the moment")
+
+    }
+
+    private fun loadingState() {
+        currencyExchangeRateLiveData.value = Resource.loading()
+    }
+
+
 
     private fun computeConversionRate(response: FixerRatingsResponse) {
         val conversionRate = currencyConverterUseCases.computeConversionRate(
