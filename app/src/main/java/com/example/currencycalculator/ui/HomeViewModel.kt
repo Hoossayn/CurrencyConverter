@@ -50,20 +50,16 @@ class HomeViewModel @ViewModelInject constructor(
                         computeConversionRate(it)
                     }
                 }
+            }else{
+                errorState()
             }
         }
     }
 
-    private fun errorState() {
-        currencyExchangeRateLiveData.value = Resource.error("Error occurred: Unable to perform conversion at the moment")
-
-    }
 
     private fun loadingState() {
         currencyExchangeRateLiveData.value = Resource.loading()
     }
-
-
 
     private fun computeConversionRate(response: FixerRatingsResponse) {
         val conversionRate = currencyConverterUseCases.computeConversionRate(
@@ -74,6 +70,11 @@ class HomeViewModel @ViewModelInject constructor(
         currencyExchangeRateLiveData.value = Resource.success(
                 conversionRate
         )
+    }
+
+    private fun errorState() {
+        currencyExchangeRateLiveData.value = Resource.error("Error occurred: Unable to perform conversion at the moment")
+
     }
 
     fun getRatingsLiveData(): MutableLiveData<Resource<Double>> {

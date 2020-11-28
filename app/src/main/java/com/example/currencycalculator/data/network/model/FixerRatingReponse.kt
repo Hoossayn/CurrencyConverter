@@ -1,7 +1,6 @@
 package com.example.currencycalculator.data.network.model
 
 import com.example.currencycalculator.data.network.model.response.FixerRatingResponse
-import com.example.currencycalculator.data.network.model.response.Rates
 import retrofit2.Response
 
 class FixerRatingsResponse(private val ratingOfCurrencyToConvertTo: Response<FixerRatingResponse>,
@@ -17,15 +16,15 @@ class FixerRatingsResponse(private val ratingOfCurrencyToConvertTo: Response<Fix
     }
 
     private fun getCurrencyRating( response: Response<FixerRatingResponse>): Double {
-        var ss:Double? = null
+        var currentRating:Double? = null
         for(ratings in response.body()?.rates!!.values){
-            ss = ratings
+            currentRating = ratings
             return  ratings
         }
 
         return when( response.isSuccessful){
             true -> {
-              ss!!
+              currentRating!!
                // response.body()?.rates?.currentRatings!!
             }
             else -> {

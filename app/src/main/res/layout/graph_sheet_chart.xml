@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_bg">
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabBackground="@color/blue"
+            app:tabGravity="fill"
+            app:tabIndicator="@drawable/tab_indicator"
+            app:tabIndicatorColor="@color/green"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorGravity="bottom"
+            app:tabIndicatorHeight="20dp"
+            app:tabMaxWidth="0dp"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            app:tabTextColor="@color/light_grey">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/past_30_days" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/past_90_days" />
+        </com.google.android.material.tabs.TabLayout>
+
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/graphView"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="50dp"
+            android:elevation="10dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tabLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+        <com.fdev.backgroundchart.GradientChart
+            android:id="@+id/gradientChart"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:plusColorStart="@color/blue"
+            app:plusColorEnd="#90CAF9"
+            app:minusColorStart="#90CAF9"
+            app:minusColorEnd="@color/blue"
+            app:zoom="10"
+            app:isBezier="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tabLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mail_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/get_rate_text"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/graphView" />
+
+        <include
+            layout="@layout/graph_value"
+            android:layout_width="409dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mail_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/graphView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -13,4 +13,9 @@
     <string name="convert">Convert</string>
     <string name="sign_up_text">Sign up</string>
 
+    <string name="past_30_days">Past 30 days</string>
+    <string name="past_90_days">Past 90 days</string>
+    <string name="get_rate_text"><u>Get rate alerts straight to your email inbox</u></string>
+
+
 </resources>

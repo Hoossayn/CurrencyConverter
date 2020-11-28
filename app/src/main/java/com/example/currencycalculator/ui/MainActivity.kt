@@ -1,38 +1,32 @@
 package com.example.currencycalculator.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
-import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.currencycalculator.R
-import com.example.currencycalculator.data.Status
-import com.example.currencycalculator.data.model.Currency
-import com.example.currencycalculator.ui.dialog.CurrencySelectionDialogFragment
+import com.example.currencycalculator.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val host: NavHostFragment =
             supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment
 
-        val navController = host.navController
-
-//        setSupportActionBar(toolbar)
-
+        /*val navController = host.navController
         val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment))
-//        setupActionBarToNavController(navController, appBarConfiguration)
-
+        setupActionBarToNavController(navController, appBarConfiguration)*/
 
     }
 

@@ -22,16 +22,3 @@ class FixerRatingResponse {
    // var rates: Rates? = null
 }
 
-class Rates {
-
-    @SerializedName(
-        "NGN",
-        alternate = ["AED", "AFN", "ARS", "AUD", "BBD", "BDT", "BGN", "BHD", "BMD", "BND", "BOB", "BRL", "BTN", "BZD", "CAD", "CHF", "CLP", "CNY", "COP", "CRC", "CZK", "DKK", "DOP", "EGP", "ETB", "EUR", "GBP", "GEL", "GHS", "GMD", "GYD", "HKD", "HRK", "HUF", "IDR", "ILS", "INR", "ISK", "JMD", "JPY", "KES", "KRW", "KWD", "KYD", "KZT", "LAK", "LKR", "LRD", "LTL", "MAD", "MDL", "MKD", "MNT", "MUR", "MWK", "MXN", "MYR", "MZN", "NAD", "NIO", "NOK", "NPR", "NZD", "OMR", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "SAR", "SEK", "SGD", "SOS", "SRD", "THB", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "UYU", "VEF", "VND", "YER", "ZAR"]
-    )
-
-    @Expose
-    var currentRatings: Double? = 1.00
-
-
-
-}
